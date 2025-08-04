@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'otp.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>OTP Verification</h1>
+        <p>Enter the OTP sent to <span id="email">{{ email }}</span></p>
+
+        <form method="POST" action="{% url 'verify_otp' %}">
+            {% csrf_token %}
+            <div class="otp-input">
+                <input type="text" name="d1" maxlength="1" required>
+                <input type="text" name="d2" maxlength="1" required>
+                <input type="text" name="d3" maxlength="1" required>
+                <input type="text" name="d4" maxlength="1" required>
+                <input type="text" name="d5" maxlength="1" required>
+                <input type="text" name="d6" maxlength="1" required>
+            </div>
+            <button type="submit">Verify</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <div class="resend-text">
+            Didn't receive the code? 
+            <form method="POST" action="{% url 'otp' %}" style="display:inline;">
+                {% csrf_token %}
+                <input type="hidden" name="email" value="{{ email }}">
+                <input type="hidden" name="pass" value="{{ password }}">
+                <button type="submit" class="resend-link">Resend Code</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

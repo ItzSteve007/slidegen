@@ -1,0 +1,38 @@
+{% extends 'nav.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/user.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="overlay"></div>
+<div class="user-page">
+<div class="container">
+
+  <!-- Full-width images with number text -->
+{% for image in images %}
+  <div class="mySlides">
+    <div class="numbertext">{{ forloop.counter }}</div>
+    <img src="{% static image.src %}" style="width:100%">
+  </div>
+{% endfor %}
+
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+  <!-- Image text -->
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <!-- Thumbnail images -->
+
+</div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/user.js' %}"></script>
+{% endblock %}

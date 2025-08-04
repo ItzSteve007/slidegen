@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to right, #0575E6, #00F260);
+    color: #1a1a1a;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    max-width: 400px;
+    width: 100%;
+}
+
+h1 {
+    margin-bottom: 1.5rem;
+    color: #1a1a1a;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+p {
+    margin-bottom: 2rem;
+    color: #444;
+    font-weight: 300;
+}
+
+.otp-input {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.otp-input input {
+    width: 50px;
+    height: 50px;
+    margin: 0 8px;
+    text-align: center;
+    font-size: 1.5rem;
+    border: 2px solid #0575E6;
+    border-radius: 12px;
+    background-color: #ffffff;
+    color: #1a1a1a;
+    transition: all 0.3s ease;
+}
+
+.otp-input input:focus {
+    border-color: #00F260;
+    box-shadow: 0 0 0 2px rgba(0, 242, 96, 0.3);
+    outline: none;
+}
+
+.otp-input input::-webkit-outer-spin-button,
+.otp-input input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.otp-input input[type=number] {
+    -moz-appearance: textfield;
+}
+
+button {
+    background: linear-gradient(135deg, #0575E6, #00F260);
+    color: white;
+    border: 2px solid #0575E6;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 5px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #00F260, #0575E6);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(5, 117, 230, 0.2);
+}
+
+button:disabled {
+    background: #cccccc;
+    border-color: #999999;
+    color: #666666;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+#timer {
+    font-size: 1rem;
+    color: #0575E6;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.expired {
+    animation: pulse 2s infinite;
+    color: #e53935;
+}
+
+.resend-text {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.resend-link {
+    color: #0575E6;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.resend-link:hover {
+    color: #00F260;
+    text-decoration: underline;
+}
+
+#email {
+    color: #0575E6;
+    font-weight: 500;
+}
