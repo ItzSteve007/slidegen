@@ -1,0 +1,21 @@
+.dashboard-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.upload-box {
+  margin-bottom: 30px;
+}
+
+.upload-label {
+  font-size: 18px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.upload-button, .ppt-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}

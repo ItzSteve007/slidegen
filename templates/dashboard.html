@@ -1,0 +1,47 @@
+{% extends "nav.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center" style="background: linear-gradient(to bottom right, #0575E6, #00F260);">
+  <div class="w-full max-w-3xl bg-white p-12 rounded-2xl shadow-2xl">
+    <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">User Dashboard</h2>
+
+    <!-- Upload Images Form -->
+    <form method="POST" action="{% url 'upload_images' %}" enctype="multipart/form-data" class="space-y-6">
+      {% csrf_token %}
+      <div>
+        <label class="block text-lg font-medium text-gray-700 mb-2">Upload Images</label>
+        <input type="file" name="images" accept="image/*" multiple
+               class="block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-blue-500 focus:border-blue-500 text-base" required>
+      </div>
+
+      <button type="submit"
+              class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 text-lg transition">
+        Upload Images
+      </button>
+    </form>
+
+    <!-- Create PPT Button -->
+    <form method="POST" action="{% url 'create_ppt' %}" class="mt-8">
+      {% csrf_token %}
+      <button type="submit"
+              class="w-full bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 text-lg transition">
+        Create PPT
+      </button>
+    </form>
+    {% if download_url %}
+  <div class="mt-6 text-center">
+    <p class="text-lg font-semibold text-gray-800">Download your presentation:</p>
+    <a href="{{ download_url }}" class="inline-block mt-2 bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition">
+      Download PPT
+    </a>
+  </div>
+{% endif %}
+
+  </div>
+</div>
+{% endblock %}

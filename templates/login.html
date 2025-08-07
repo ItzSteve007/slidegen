@@ -8,28 +8,46 @@
 {% block content %}
 <div class="login-page">
 <div class="container" id="container">
+
+	<!-- Sign-Up Form -->
 	<div class="form-container sign-up-container">
 		<form action="{% url 'otp' %}" method="post">
 			{% csrf_token %}
 			<h1>Create Account</h1>
 			<span>Use your Email for registration</span>
-			<input type="text" placeholder="Name" required/>
-			<input type="email" placeholder="Email" required/>
-			<input type="password" placeholder="Password" required/>
+			
+			{% if signup_error %}
+				<p class="error">{{ signup_error }}</p>
+			{% endif %}
+
+			<input type="text" placeholder="Name" name="name" required/>
+			<input type="email" placeholder="Email" name="email" required/>
+			<input type="password" placeholder="Password" name="pass" required/>
+			<input type="hidden" name="action" value="signup"/>
 			<button>Sign Up</button>
 		</form>
 	</div>
+
+	<!-- Sign-In Form -->
 	<div class="form-container sign-in-container">
 		<form action="{% url 'otp' %}" method="post">
 			{% csrf_token %}
 			<h1>Sign in</h1>
 			<span>Use your account</span>
-			<input type="email" placeholder="Email" name="email"/>
-			<input type="password" placeholder="Password" name="pass"/>
+
+			{% if login_error %}
+				<p class="error">{{ login_error }}</p>
+			{% endif %}
+
+			<input type="email" placeholder="Email" name="email" required/>
+			<input type="password" placeholder="Password" name="pass" required/>
+			<input type="hidden" name="action" value="login"/>
 			<a href="#">Forgot your password?</a>
 			<button>Sign In</button>
 		</form>
 	</div>
+
+	<!-- Overlay -->
 	<div class="overlay-container">
 		<div class="overlay">
 			<div class="overlay-panel overlay-left">
@@ -44,8 +62,8 @@
 			</div>
 		</div>
 	</div>
-</div>
 
+</div>
 </div>
 <div class="overlay"></div>
 {% endblock %}
